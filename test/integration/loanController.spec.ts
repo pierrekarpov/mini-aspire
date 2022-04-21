@@ -1,7 +1,6 @@
 import app from '../../src/app'
 import request from 'supertest'
 import sinon from 'sinon';
-import { Invoice } from '../../src/db/models/Invoice';
 import { Loan } from '../../src/db/models/Loan';
 
 describe('Loan Controller', () => {
