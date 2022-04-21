@@ -1,6 +1,13 @@
 # Mini Aspire
 
-### steps to run and use:
+### script steps to run and use:
+
+- Duplicate `.env.example` as `.env` fill in the details (make sure you have a MySQL db ready)
+- `source install-part-1.sh`
+- After the server start, stop it (ctrl-c)
+- `source install-part-2.sh`
+
+### manual steps to run and use:
 
 - Install dependencies `npm i`
 - Duplicate `.env.example` as `.env`
@@ -9,7 +16,7 @@
 - Start services `env-cmd -f ./.env npm run dev ` (to initialize the db)
 - Stop services (ctrl-c)
 - Run migration `env-cmd -f ./.env npx sequelize db:migrate `
-- Run seed `env-cmd -f ./.env npx sequelize db:seed `
+- Run seed `env-cmd -f ./.env npx sequelize db:seed:all `
 - Start services `env-cmd -f ./.env npm run dev `
 - Send API requests to http://localhost:${PORT}
 
