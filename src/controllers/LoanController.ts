@@ -66,11 +66,7 @@ export default {
                 }
             })
         } else if (_.get(user, 'userTypeId') && _.get(user, 'userTypeId') == UserType.ADMIN) {
-            loans = await Loan.findAll({
-                where: {
-                    approverUserId: _.get(user, 'id')
-                }
-            })
+            loans = await Loan.findAll({})
         }
 
         return res.status(200).json({ loans });
