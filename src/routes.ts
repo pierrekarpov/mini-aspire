@@ -1,5 +1,6 @@
 import express from 'express';
-// import ImageController from './controllers/ImageController';
+import AuthController from './controllers/AuthController';
+import LoanController from './controllers/LoanController';
 
 const router = express.Router();
 
@@ -7,19 +8,16 @@ const router = express.Router();
  * Map routes to controller methods
  */
 
-// Image
-// router.post('/image/upload', ImageController.uploadImages);
-// router.get('/image/:id', ImageController.get);
-
 
 // Auth
 // post login
+router.post('/auth/login', AuthController.login)
 
 // Loan
-// post apply
-// post approve
-// list  (for admin to see which ones to approve) (for user to see all there loans)
-// get :id (for user to see the invoices)
+router.post('/loan/apply', LoanController.apply)
+router.post('/loan/:id/approve', LoanController.approve)
+router.get('/loans', LoanController.list)
+router.get('/loan/:id', LoanController.get)
 
 // Invoice
 // post pay

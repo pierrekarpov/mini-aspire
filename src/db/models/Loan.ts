@@ -1,5 +1,6 @@
-import { Table, Model, Column, DataType, ForeignKey } from "sequelize-typescript";
+import { Table, Model, Column, DataType, ForeignKey, HasMany } from "sequelize-typescript";
 import { User } from "./User";
+import { Invoice } from "./Invoice";
 
 @Table({
     paranoid: true,
@@ -51,5 +52,6 @@ export class Loan extends Model {
     })
     approverUserId?: number;
 
-
+    @HasMany(() => Invoice)
+    invoices?: any[]
 }
