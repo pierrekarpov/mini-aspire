@@ -1,15 +1,19 @@
 import { Sequelize } from "sequelize-typescript";
-
-import { Dog } from "./models/Dog";
+const env = process.env.NODE_ENV || 'development'
+const config = require(`./config.js`)[env];
+import { UserType } from "./models/UserType";
+import { User } from "./models/User";
+import { Loan } from "./models/Loan";
+import { Invoice } from "./models/Invoice";
 
 const connection = new Sequelize({
-    dialect: "mysql",
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
+    dialect: config.dialect,
+    host: config.host,
+    username: config.username,
+    password: config.password,
+    database: config.database,
     logging: false,
-    models: [Dog],
+    models: [UserType, User, Loan, Invoice],
 });
 
 export default connection;
