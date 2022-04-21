@@ -1,1 +1,3 @@
 export const REPAYMENT_FREQUENCY = 7
+
+export const MILLISECONDS_IN_A_DAY = 24 * 3600 * 1000

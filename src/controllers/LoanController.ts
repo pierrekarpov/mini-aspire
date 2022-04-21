@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import asyncHandler from '../utils/asyncHandler';
-import { decodeJwtToken, getUser } from '../utils/auth';
+import { getUser } from '../utils/auth';
 import * as _ from 'lodash'
 import { UserType } from '../enums/UserType';
 import { Loan } from '../db/models/Loan';
@@ -13,8 +13,6 @@ export default {
     apply: asyncHandler(async (req: Request, res: Response) => {
         const user = getUser(req.headers.authorization || '')
         const { amountRequired, repaymentAmount, terms } = req.body
-
-
         const loan = await Loan.create({
             amountRequired,
             repaymentAmount,
@@ -28,8 +26,7 @@ export default {
     approve: asyncHandler(async (req: Request, res: Response) => {
         const user = getUser(req.headers.authorization || '')
         const { id } = req.params
-        console.log('id', id)
-        if (!_.get(user, 'userTypeId') || _.get(user, 'userTypeId') != UserType.ADMIN) {
+        if (!user || !_.get(user, 'userTypeId') || _.get(user, 'userTypeId') != UserType.ADMIN) {
             return res.status(401).json({ error: 'You are not authorised to approve a loan' });
         }
 
@@ -75,9 +72,6 @@ export default {
                 }
             })
         }
-
-
-
 
         return res.status(200).json({ loans });
     }),
