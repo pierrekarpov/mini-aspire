@@ -14,7 +14,7 @@ export default {
     pay: asyncHandler(async (req: Request, res: Response) => {
         const { id } = req.params
         const user = getUser(req.headers.authorization || '')
-        if (!user) {
+        if (!user || !_.get(user, 'id')) {
             return res.status(401).json({ error: 'You are not authorised to pay for a loan' });
         }
         const invoice = await Invoice.findByPk(id)

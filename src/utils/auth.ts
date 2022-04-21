@@ -14,7 +14,3 @@ export function decodeJwtToken(token: string) {
 export function getUser(autorizationHeader: string) {
     return decodeJwtToken(autorizationHeader.split(' ')[1])
 }
-
-// decodeJwtToken(token) {
-        //     return jwt.decode(token);
-        // },
