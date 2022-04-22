@@ -20,6 +20,14 @@
 - Start services `env-cmd -f ./.env npm run dev `
 - Send API requests to http://localhost:${PORT}
 
+### Technology used:
+
+- Server: Node.jswritten in Typescript
+- API framework: Express.js
+- Database: MySQL,
+- ORM: Sequelize
+- Testing: Jest, Sinon and Supertest
+
 ### App Structure
 
 ```bash
